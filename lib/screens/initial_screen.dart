@@ -59,8 +59,8 @@ class Dashboard extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Qual é este Pokémon?',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  'Adivinhe meu Pokémon?',
+                  style: TextStyle(fontSize: 22, color: Colors.white),
                 ),
               ),
             ),

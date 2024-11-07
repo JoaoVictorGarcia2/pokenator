@@ -13,7 +13,7 @@ class PokemonTypeQuestion extends StatelessWidget {
           // Imagem de fundo
           Positioned.fill(
             child: Image.asset(
-              'images/background1.png', // Verifique o caminho do fundo
+              'images/background.jpg', // Verifique o caminho do fundo
               fit: BoxFit.cover,
             ),
           ),
