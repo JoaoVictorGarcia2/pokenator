@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projetopersistencia/screens/pokemon_type_question.dart'; // Import atualizado para PokemonTypeQuestion
+import 'package:projetopersistencia/screens/quiz_screen.dart'; // Import atualizado para PokemonTypeQuestion
+import 'package:projetopersistencia/screens/pokemon_list_screen.dart'; // Novo import para a tela da lista de Pokémons
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -8,7 +9,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: const Color(0xFF1E3A5F), 
+      backgroundColor: const Color(0xFF1E3A5F),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -36,15 +37,15 @@ class Dashboard extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            // Botão "Qual é este Pokémon?"
+            // Botão "Adivinhe meu Pokémon?"
             Padding(
-              padding: const EdgeInsets.only(bottom: 24.0),
+              padding: const EdgeInsets.only(bottom: 16.0),
               child: ElevatedButton(
                 onPressed: () {
                   // Navega para a tela PokemonTypeQuestion
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const PokemonTypeQuestion(),
+                      builder: (context) => QuizScreen(),
                     ),
                   );
                 },
@@ -60,6 +61,34 @@ class Dashboard extends StatelessWidget {
                 ),
                 child: const Text(
                   'Adivinhe meu Pokémon?',
+                  style: TextStyle(fontSize: 22, color: Colors.white),
+                ),
+              ),
+            ),
+            // Botão "Ver Pokémons"
+            Padding(
+              padding: const EdgeInsets.only(bottom: 24.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Navega para a tela PokemonListScreen
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PokemonListScreen(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey[800],
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal: 32.0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: const Text(
+                  'Ver Pokémons',
                   style: TextStyle(fontSize: 22, color: Colors.white),
                 ),
               ),
