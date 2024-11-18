@@ -64,7 +64,8 @@ class _QuizScreenState extends State<QuizScreen> {
           'spDef': row[9],
           'speed': row[10],
           'generation': row[11],
-          'legendary': row[12].toString().toLowerCase() == 'true' ? 'sim' : 'não',
+          'legendary':
+              row[12].toString().toLowerCase() == 'true' ? 'sim' : 'não',
         };
       }).toList();
 
@@ -73,12 +74,7 @@ class _QuizScreenState extends State<QuizScreen> {
           .toList();
 
       questions = [
-        Question(
-            questionText: 'O Pokémon é do tipo Fogo?',
-            options: ['Sim', 'Não'],
-            column: 'type1',
-            checkValue: 'fire'),
-        // Outras perguntas
+        Question(questionText: 'O Pokémon é do tipo Fogo?', options: ['Sim', 'Não'], column: 'type1', checkValue: 'fire'),
         Question(questionText: 'O Pokémon é do tipo Água?', options: ['Sim', 'Não'], column: 'type1', checkValue: 'water'),
         Question(questionText: 'O Pokémon é do tipo Elétrico?', options: ['Sim', 'Não'], column: 'type1', checkValue: 'electric'),
         Question(questionText: 'O Pokémon é do tipo Grama?', options: ['Sim', 'Não'], column: 'type1', checkValue: 'grass'),
@@ -94,7 +90,6 @@ class _QuizScreenState extends State<QuizScreen> {
         Question(questionText: 'O Pokémon pertence a uma geração maior que 3?', options: ['Sim', 'Não'], column: 'generation', checkValue: 3),
         Question(questionText: 'O Pokémon possui tipo secundário Voador?', options: ['Sim', 'Não'], column: 'type2', checkValue: 'flying'),
         Question(questionText: 'O Pokémon possui ataque especial acima de 100?', options: ['Sim', 'Não'], column: 'spAtk', checkValue: 100),
-        Question(questionText: 'O Pokémon é da geração 2?', options: ['Sim', 'Não'], column: 'generation', checkValue: 2),
         Question(questionText: 'O Pokémon é do tipo Psíquico?', options: ['Sim', 'Não'], column: 'type1', checkValue: 'psychic'),
         Question(questionText: 'O Pokémon tem mais de 120 de ataque físico?', options: ['Sim', 'Não'], column: 'attack', checkValue: 120),
         Question(questionText: 'O Pokémon é da geração 4?', options: ['Sim', 'Não'], column: 'generation', checkValue: 4),
@@ -155,8 +150,8 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Future<void> fetchPokemonData(String name) async {
     try {
-      final response = await http
-          .get(Uri.parse('https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}'));
+      final response = await http.get(
+          Uri.parse('https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}'));
       if (response.statusCode == 200) {
         setState(() {
           pokemonData = jsonDecode(response.body);
@@ -208,8 +203,8 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
-  void returnToInitialScreen() {
-    Navigator.pushNamed(context, '/initial_screen'); // Ajuste a rota
+  void navigateToInitialScreen() {
+    Navigator.pushNamed(context, '/initial_screen');
   }
 
   @override
@@ -220,82 +215,103 @@ class _QuizScreenState extends State<QuizScreen> {
             appBar: AppBar(
               title: const Text('Quiz de Pokémon'),
             ),
-            body: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    if (pokemonData != null) ...[
-                      Text(
-                        pokemonData!['name'].toString().toUpperCase(),
-                        style: const TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.network(
-                            pokemonData!['sprites']['versions']['generation-v']
-                                ['black-white']['animated']['front_default'],
-                            height: 100,
-                            errorBuilder: (context, error, stackTrace) =>
-                                const Text('Erro ao carregar imagem'),
-                          ),
-                          Image.network(
-                            pokemonData!['sprites']['versions']['generation-v']
-                                ['black-white']['animated']['back_default'],
-                            height: 100,
-                            errorBuilder: (context, error, stackTrace) =>
-                                const Text('Erro ao carregar imagem'),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Text(
-                        'Número de perguntas feitas: ${askedQuestions.length}',
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        'Este é seu Pokémon?',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            onPressed: returnToInitialScreen,
-                            child: const Text('Sim'),
-                          ),
-                          const SizedBox(width: 20),
-                          ElevatedButton(
-                            onPressed: resetQuiz,
-                            child: const Text('Não'),
-                          ),
-                        ],
-                      ),
-                    ] else ...[
-                      Text(
-                        currentQuestion.questionText,
-                        style: const TextStyle(fontSize: 20),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 20),
-                      ...currentQuestion.options.map(
-                        (option) => ElevatedButton(
-                          onPressed: () => answerQuestion(option),
-                          child: Text(option),
+            body: Container(
+              color: const Color.fromARGB(255, 20, 107, 148), 
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (pokemonData != null) ...[
+                        Text(
+                          pokemonData!['name'].toString().toUpperCase(),
+                          style: const TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
                         ),
-                      ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.network(
+                              pokemonData!['sprites']['versions']
+                                  ['generation-v']['black-white']
+                                  ['animated']['front_default'],
+                              height: 100,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  const Text('Erro ao carregar imagem'),
+                            ),
+                            Image.network(
+                              pokemonData!['sprites']['versions']
+                                  ['generation-v']['black-white']
+                                  ['animated']['back_default'],
+                              height: 100,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  const Text('Erro ao carregar imagem'),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'Número de perguntas feitas: ${askedQuestions.length}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 20),
+                        const Text(
+                          'Este é seu Pokémon?',
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: navigateToInitialScreen,
+                              child: const Text('Sim'),
+                            ),
+
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                                textStyle: const TextStyle(fontSize: 20),
+                              ),
+                              onPressed: resetQuiz,
+                              child: const Text('Não'),
+                            ),
+
+                          ],
+                        ),
+                      ] else ...[
+                        Text(
+                          currentQuestion.questionText,
+                          style: const TextStyle(
+                            fontSize: 28, 
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 20),
+                        ...currentQuestion.options.map(
+                          (option) => ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 20, horizontal: 40),
+                                textStyle: const TextStyle(fontSize: 20)),
+                            onPressed: () => answerQuestion(option),
+                            child: Text(option),
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),

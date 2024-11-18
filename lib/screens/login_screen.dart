@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_usernameController.text == storedUsername &&
         _passwordController.text == storedPassword) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const Dashboard()),
+        MaterialPageRoute(builder: (context) => const InitialScreen()),
       );
     } else {
       setState(() {
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF2E2E2E), // Cinza mais escuro
+      backgroundColor: const Color(0xFF1E3A5F), 
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -41,22 +41,20 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Imagem de fundo menor
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32.0),
                   child: Image.asset(
                     'images/poke.png',
-                    width: 150, // Ajusta o tamanho da imagem
+                    width: 150, 
                     height: 150,
                   ),
                 ),
-                // Campo de entrada para usuário
                 TextField(
                   controller: _usernameController,
                   decoration: InputDecoration(
                     labelText: 'Usuário',
                     filled: true,
-                    fillColor: Colors.grey[300], // Fundo cinza claro
+                    fillColor: Colors.grey[300], 
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -64,7 +62,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 16),
-                // Campo de entrada para senha
                 TextField(
                   controller: _passwordController,
                   obscureText: true,
@@ -79,7 +76,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 24),
-                // Botão de login
                 ElevatedButton(
                   onPressed: _login,
                   style: ElevatedButton.styleFrom(
@@ -104,7 +100,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 const SizedBox(height: 16),
-                // Botão de navegação para a tela de registro
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).push(

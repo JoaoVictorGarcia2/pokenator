@@ -32,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF2E2E2E), // Cinza mais escuro
+      backgroundColor: const Color(0xFF2E2E2E),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -40,16 +40,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Imagem de fundo menor
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32.0),
                   child: Image.asset(
                     'images/poke.png',
-                    width: 150, // Ajusta o tamanho da imagem
+                    width: 150, 
                     height: 150,
                   ),
                 ),
-                // Campo de entrada para usuário
                 TextField(
                   controller: _usernameController,
                   decoration: InputDecoration(
@@ -63,7 +61,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 16),
-                // Campo de entrada para senha
                 TextField(
                   controller: _passwordController,
                   obscureText: true,
@@ -78,7 +75,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: const TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 24),
-                // Botão de criação de conta
                 ElevatedButton(
                   onPressed: _register,
                   style: ElevatedButton.styleFrom(
@@ -103,7 +99,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 const SizedBox(height: 16),
-                // Botão de navegação para a tela de login
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacement(

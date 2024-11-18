@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
-
+import 'screens/quiz_screen.dart';
+import 'screens/initial_screen.dart';
 void main() {
   runApp(MyApp());
 }
@@ -13,7 +14,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/quiz': (context) => QuizScreen(),
+        '/initial_screen': (context) => InitialScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }

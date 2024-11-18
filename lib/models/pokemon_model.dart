@@ -1,4 +1,3 @@
-// lib/models/pokemon_model.dart
 class Pokemon {
   final int id;
   final String name;
@@ -30,7 +29,6 @@ class Pokemon {
     required this.legendary,
   });
 
-  // Método para criar um Pokémon a partir de um Map
   factory Pokemon.fromMap(Map<String, dynamic> data) {
     return Pokemon(
       id: int.parse(data['#']),

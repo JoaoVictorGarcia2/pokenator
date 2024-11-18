@@ -1,16 +1,38 @@
-# projetopersistencia
 
-A new Flutter project.
+---
+## POKENATOR
+## Funcionalidades do Projeto
 
-## Getting Started
+- **Interface de Usuário**: O aplicativo possui uma interface de usuário básica, desenvolvida com Flutter, onde os usuários podem visualizar e interagir com os dados armazenados.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Autorizações
+Este aplicativo não coleta ou utiliza dados pessoais sem a devida autorização. Toda a manipulação de dados é realizada localmente no dispositivo do usuário, sem transferências para servidores externos.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Documentação
+Para mais detalhes sobre a implementação de funcionalidades e outras informações, consulte a documentação oficial do Flutter:
+- [Flutter Documentation](https://docs.flutter.dev/)
+- [SQLite in Flutter](https://pub.dev/packages/sqflite)
+
+---
+
+## Contato
+- **João Victor Garcia** - joaovicgarcia514@gmail.com
+- **Gabriel Takarada** - gabrieltakarada@gmail.com
+- **João Victor Vieira Moraes** - Joaovictopassagem2001@gmail.com
+
+---
+
+## Licença
+Este projeto é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+Este é um projeto desenvolvido para demonstrar o uso de armazenamento persistente em aplicativos Flutter. Esperamos que você encontre útil esta base de código para seus próprios projetos!
+
+---
+
+Feito com 💙 por João Victor Garcia, Gabriel Takarada e João Victor Vieira Moraes.

@@ -20,16 +20,13 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
   }
 
   Future<void> _loadPokemonData() async {
-    // Carrega o arquivo CSV dos assets
     final rawData = await rootBundle.loadString('data/pokemon.csv');
     
-    // Faz o parsing do CSV usando ";" como delimitador
     List<List<dynamic>> data = const CsvToListConverter(
       fieldDelimiter: ';',
       eol: '\n',
     ).convert(rawData);
     
-    // Mapeia os dados do CSV para uma lista de Mapas
     pokemonData = data.skip(1).map((row) => {
       'id': row[0],
       'name': row[1],
@@ -43,7 +40,7 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
       'special_defense': row[9],
       'speed': row[10],
       'generation': row[11],
-      'legendary': row[12] == 'True', // Converte para boolean
+      'legendary': row[12] == 'True', 
     }).toList();
 
     setState(() {});
@@ -61,7 +58,6 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
     );
   }
 
-  // Exibir a lista de Pokémon
   Widget _displayPokemonList() {
     return ListView.builder(
       itemCount: pokemonData.length,
@@ -81,7 +77,6 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
     );
   }
 
-  // Exibir os detalhes do Pokémon selecionado
   void _showPokemonDetails(Map<String, dynamic> pokemon) {
     showDialog(
       context: context,
