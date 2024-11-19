@@ -35,4 +35,4 @@ Este é um projeto desenvolvido para demonstrar o uso de armazenamento persisten
 
 ---
 
-Feito com 💙 por João Victor Garcia, Gabriel Takarada e João Victor Vieira Moraes.
+Feito com 💙 por João Victor Garcia, Gabriel Silva Takarada e João Victor Moraes Vieira.
